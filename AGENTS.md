@@ -1,5 +1,3 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+在这个聊天中使用中文进行对话。代码的注释要日语
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+我正在写一个网站，通过关联github，上线在cloud flare

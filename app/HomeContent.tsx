@@ -115,9 +115,7 @@ const interests = [
   "Practical Prototyping",
 ];
 
-export default async function Page() {
-  await new Promise((resolve) => setTimeout(resolve, 2500));
-
+export default function HomeContent() {
   const filmarks = filmarksProject;
 
   return (
