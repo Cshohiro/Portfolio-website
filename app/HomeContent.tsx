@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ImageLightbox from "./ImageLightbox";
 
 interface ChartItem {
   name: string;
@@ -15,7 +15,6 @@ interface FilmarksProject {
   dataset: string[];
   findings: string[];
   charts: ChartItem[];
-  chartPath: string;
 }
 
 interface SimpleProject {
@@ -90,7 +89,6 @@ const filmarksProject: FilmarksProject = {
         "独自指標 Viewing Multiplier により、『保存を経由せず直接観られやすい作品』を抽出しています。",
     },
   ],
-  chartPath: "D:/StudyPy/py_practice/WORK/w02_movieRank/charts",
 };
 
 const simpleProjects: SimpleProject[] = [
@@ -119,24 +117,24 @@ export default function HomeContent() {
   const filmarks = filmarksProject;
 
   return (
-    <main className="min-h-screen bg-white text-[#111111]">
+    <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
       <div className="mx-auto max-w-7xl px-6 pb-24 pt-0 md:px-10 lg:px-14">
-        <header className="sticky top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur-md">
+        <header className="sticky top-0 z-50 border-b border-[color:var(--color-border)] bg-[var(--color-nav)] backdrop-blur-md">
           <div className="mx-auto flex max-w-7xl items-center justify-center px-6 py-5 md:px-10 lg:px-14">
-            <nav className="flex gap-8 text-sm tracking-[0.08em] text-black/70 md:gap-14">
-              <a className="transition hover:text-[#a48948]" href="#home">
+            <nav className="flex gap-8 text-sm tracking-[0.08em] text-[var(--color-text-muted)] md:gap-14">
+              <a className="transition hover:text-[var(--color-accent)]" href="#home">
                 Home
               </a>
-              <a className="transition hover:text-[#a48948]" href="#projects">
+              <a className="transition hover:text-[var(--color-accent)]" href="#projects">
                 Projects
               </a>
               <a
-                className="transition hover:text-[#a48948]"
+                className="transition hover:text-[var(--color-accent)]"
                 href="#filmarks-detail"
               >
                 Filmarks Detail
               </a>
-              <a className="transition hover:text-[#a48948]" href="#about">
+              <a className="transition hover:text-[var(--color-accent)]" href="#about">
                 About
               </a>
             </nav>
@@ -148,7 +146,7 @@ export default function HomeContent() {
           className="grid min-h-[88vh] items-center gap-14 py-14 md:grid-cols-[1.15fr_0.85fr] md:py-20"
         >
           <div className="max-w-3xl animate-[fadeUp_0.9s_ease-out_forwards] opacity-0">
-            <div className="mb-6 inline-block border-b border-[#a48948] pb-2 text-sm tracking-[0.24em] text-[#a48948]">
+            <div className="mb-6 inline-block border-b border-[color:var(--color-accent)] pb-2 text-sm tracking-[0.24em] text-[var(--color-accent)]">
               KOGAKUIN UNIVERSITY
             </div>
 
@@ -156,17 +154,17 @@ export default function HomeContent() {
               張 書浩
             </h1>
 
-            <div className="mt-4 text-2xl font-medium leading-tight tracking-[0.04em] text-black/80 md:text-3xl">
+            <div className="mt-4 text-2xl font-medium leading-tight tracking-[0.04em] text-[var(--color-text-muted)] md:text-3xl">
               工学院大学 3年生
             </div>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-black/72 md:text-xl">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-text-muted)] md:text-xl">
               Python・Web開発を軸に、実際に動く仕組みを作ることを重視しています。
               データ収集、分析、可視化、そしてシステム化まで一貫して実装することに関心があります。
             </p>
 
             <div className="mt-12">
-              <div className="text-sm uppercase tracking-[0.28em] text-[#a48948]">
+              <div className="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
                 スキル
               </div>
 
@@ -174,15 +172,15 @@ export default function HomeContent() {
                 {skills.map((group, idx) => (
                   <div
                     key={group.title}
-                    className="border border-black/10 p-5 opacity-0"
+                    className="border border-[color:var(--color-border)] bg-[var(--color-surface)] p-5 opacity-0 transition hover:border-[color:var(--color-border-strong)]"
                     style={{
                       animation: `fadeUp 0.8s ease-out ${0.25 + idx * 0.12}s forwards`,
                     }}
                   >
-                    <h3 className="text-sm font-semibold tracking-[0.06em] text-black/88">
+                    <h3 className="text-sm font-semibold tracking-[0.06em] text-[var(--color-text)]">
                       {group.title}
                     </h3>
-                    <ul className="mt-4 space-y-2 text-sm leading-7 text-black/68">
+                    <ul className="mt-4 space-y-2 text-sm leading-7 text-[var(--color-text-muted)]">
                       {group.items.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -195,13 +193,13 @@ export default function HomeContent() {
             <div className="mt-10 flex flex-wrap items-center gap-6 text-sm">
               <a
                 href="#projects"
-                className="border-b border-black pb-1 tracking-[0.06em] transition hover:border-[#a48948] hover:text-[#a48948]"
+                className="border-b border-[color:var(--color-text)] pb-1 tracking-[0.06em] transition hover:border-[color:var(--color-accent)] hover:text-[var(--color-accent)]"
               >
                 Projects →
               </a>
               <a
                 href="#about"
-                className="border-b border-black/30 pb-1 tracking-[0.06em] text-black/72 transition hover:border-[#a48948] hover:text-[#a48948]"
+                className="border-b border-[color:var(--color-border-strong)] pb-1 tracking-[0.06em] text-[var(--color-text-muted)] transition hover:border-[color:var(--color-accent)] hover:text-[var(--color-accent)]"
               >
                 About →
               </a>
@@ -212,9 +210,9 @@ export default function HomeContent() {
             className="relative opacity-0"
             style={{ animation: "fadeUp 0.9s ease-out 0.45s forwards" }}
           >
-            <div className="absolute -left-4 top-0 hidden h-32 w-32 border border-[#a48948]/25 md:block" />
-            <div className="relative border border-black/10 bg-[#faf9f6] p-6 md:p-8">
-              <div className="text-xs uppercase tracking-[0.28em] text-black/45">
+            <div className="absolute -left-4 top-0 hidden h-32 w-32 border border-[color:var(--color-accent)] opacity-25 md:block" />
+            <div className="relative border border-[color:var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8">
+              <div className="text-xs uppercase tracking-[0.28em] text-[var(--color-text-subtle)]">
                 Current Stack
               </div>
 
@@ -231,15 +229,15 @@ export default function HomeContent() {
                 ].map((tag) => (
                   <span
                     key={tag}
-                    className="border border-black/10 px-3 py-2 text-xs tracking-[0.08em] text-black/68"
+                    className="border border-[color:var(--color-border)] bg-[var(--color-surface-strong)] px-3 py-2 text-xs tracking-[0.08em] text-[var(--color-text-muted)]"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-8 border-t border-black/10 pt-6">
-                <div className="text-xs uppercase tracking-[0.28em] text-black/45">
+              <div className="mt-8 border-t border-[color:var(--color-border)] pt-6">
+                <div className="text-xs uppercase tracking-[0.28em] text-[var(--color-text-subtle)]">
                   Selected Focus
                 </div>
                 <div className="mt-4 space-y-4">
@@ -250,18 +248,18 @@ export default function HomeContent() {
                   ].map(([title, desc], idx) => (
                     <div
                       key={title}
-                      className="border-b border-black/10 pb-4 last:border-b-0 last:pb-0"
+                      className="border-b border-[color:var(--color-border)] pb-4 last:border-b-0 last:pb-0"
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <div className="text-base font-medium text-black/88">
+                          <div className="text-base font-medium text-[var(--color-text)]">
                             {title}
                           </div>
-                          <div className="mt-1 text-sm leading-7 text-black/62">
+                          <div className="mt-1 text-sm leading-7 text-[var(--color-text-subtle)]">
                             {desc}
                           </div>
                         </div>
-                        <div className="text-xs tracking-[0.24em] text-[#a48948]">
+                        <div className="text-xs tracking-[0.24em] text-[var(--color-accent)]">
                           0{idx + 1}
                         </div>
                       </div>
@@ -273,10 +271,10 @@ export default function HomeContent() {
           </div>
         </section>
 
-        <section id="projects" className="border-t border-black/10 py-16 md:py-20">
+        <section id="projects" className="border-t border-[color:var(--color-border)] py-16 md:py-20">
           <div className="grid gap-8 md:grid-cols-[0.38fr_1fr]">
             <div>
-              <div className="text-sm uppercase tracking-[0.28em] text-[#a48948]">
+              <div className="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
                 Projects
               </div>
               <h2 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">
@@ -287,20 +285,20 @@ export default function HomeContent() {
             </div>
 
             <div className="space-y-8">
-              <article className="border border-black/10 p-6 md:p-8">
+              <article className="border border-[color:var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8 transition hover:border-[color:var(--color-border-strong)]">
                 <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
                   <div>
                     <h3 className="text-2xl font-medium leading-tight">
                       {filmarks.title}
                     </h3>
-                    <p className="mt-4 max-w-2xl text-sm leading-8 text-black/68 md:text-base">
+                    <p className="mt-4 max-w-2xl text-sm leading-8 text-[var(--color-text-muted)] md:text-base">
                       {filmarks.subtitle}
                     </p>
                     <div className="mt-6 flex flex-wrap gap-2">
                       {filmarks.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="border border-black/10 px-3 py-1.5 text-xs tracking-[0.08em] text-black/66"
+                          className="border border-[color:var(--color-border)] bg-[var(--color-surface-strong)] px-3 py-1.5 text-xs tracking-[0.08em] text-[var(--color-text-muted)]"
                         >
                           {tag}
                         </span>
@@ -309,14 +307,14 @@ export default function HomeContent() {
                   </div>
 
                   <div>
-                    <div className="text-xs uppercase tracking-[0.28em] text-[#a48948]">
+                    <div className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent)]">
                       Highlights
                     </div>
-                    <ul className="mt-4 space-y-3 text-sm leading-7 text-black/72">
+                    <ul className="mt-4 space-y-3 text-sm leading-7 text-[var(--color-text-muted)]">
                       {filmarks.highlights.map((point) => (
                         <li
                           key={point}
-                          className="border-b border-black/10 pb-3 last:border-b-0 last:pb-0"
+                          className="border-b border-[color:var(--color-border)] pb-3 last:border-b-0 last:pb-0"
                         >
                           {point}
                         </li>
@@ -328,7 +326,7 @@ export default function HomeContent() {
                 <div className="mt-8 flex justify-end">
                   <a
                     href="#filmarks-detail"
-                    className="border-b border-black/30 pb-1 text-sm tracking-[0.06em] text-black/72 transition hover:border-[#a48948] hover:text-[#a48948]"
+                    className="border-b border-[color:var(--color-border-strong)] pb-1 text-sm tracking-[0.06em] text-[var(--color-text-muted)] transition hover:border-[color:var(--color-accent)] hover:text-[var(--color-accent)]"
                   >
                     詳細を見る →
                   </a>
@@ -338,21 +336,21 @@ export default function HomeContent() {
               {simpleProjects.map((project) => (
                 <article
                   key={project.title}
-                  className="border border-black/10 p-6 md:p-8"
+                  className="border border-[color:var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8 transition hover:border-[color:var(--color-border-strong)]"
                 >
                   <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
                     <div>
                       <h3 className="text-2xl font-medium leading-tight">
                         {project.title}
                       </h3>
-                      <p className="mt-4 max-w-2xl text-sm leading-8 text-black/68 md:text-base">
+                      <p className="mt-4 max-w-2xl text-sm leading-8 text-[var(--color-text-muted)] md:text-base">
                         {project.subtitle}
                       </p>
                       <div className="mt-6 flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="border border-black/10 px-3 py-1.5 text-xs tracking-[0.08em] text-black/66"
+                            className="border border-[color:var(--color-border)] bg-[var(--color-surface-strong)] px-3 py-1.5 text-xs tracking-[0.08em] text-[var(--color-text-muted)]"
                           >
                             {tag}
                           </span>
@@ -361,14 +359,14 @@ export default function HomeContent() {
                     </div>
 
                     <div>
-                      <div className="text-xs uppercase tracking-[0.28em] text-[#a48948]">
+                      <div className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent)]">
                         Highlights
                       </div>
-                      <ul className="mt-4 space-y-3 text-sm leading-7 text-black/72">
+                      <ul className="mt-4 space-y-3 text-sm leading-7 text-[var(--color-text-muted)]">
                         {project.highlights.map((point) => (
                           <li
                             key={point}
-                            className="border-b border-black/10 pb-3 last:border-b-0 last:pb-0"
+                            className="border-b border-[color:var(--color-border)] pb-3 last:border-b-0 last:pb-0"
                           >
                             {point}
                           </li>
@@ -384,11 +382,11 @@ export default function HomeContent() {
 
         <section
           id="filmarks-detail"
-          className="border-t border-black/10 py-16 md:py-20"
+          className="border-t border-[color:var(--color-border)] py-16 md:py-20"
         >
           <div className="grid gap-8 md:grid-cols-[0.38fr_1fr]">
             <div>
-              <div className="text-sm uppercase tracking-[0.28em] text-[#a48948]">
+              <div className="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
                 Filmarks Detail
               </div>
               <h2 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">
@@ -399,32 +397,32 @@ export default function HomeContent() {
             </div>
 
             <div className="space-y-8">
-              <div className="border border-black/10 p-6 md:p-8">
-                <div className="text-xs uppercase tracking-[0.28em] text-[#a48948]">
+              <div className="border border-[color:var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8 transition hover:border-[color:var(--color-border-strong)]">
+                <div className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent)]">
                   Overview
                 </div>
-                <p className="mt-4 text-sm leading-8 text-black/68 md:text-base">
+                <p className="mt-4 text-sm leading-8 text-[var(--color-text-muted)] md:text-base">
                   {filmarks.objective}
                 </p>
               </div>
 
               <div className="grid gap-6 md:grid-cols-2">
-                <div className="border border-black/10 p-6">
-                  <h3 className="text-sm uppercase tracking-[0.28em] text-[#a48948]">
+                <div className="border border-[color:var(--color-border)] bg-[var(--color-surface)] p-6">
+                  <h3 className="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
                     Dataset
                   </h3>
-                  <ul className="mt-4 space-y-2 text-sm leading-7 text-black/72">
+                  <ul className="mt-4 space-y-2 text-sm leading-7 text-[var(--color-text-muted)]">
                     {filmarks.dataset.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="border border-black/10 p-6">
-                  <h3 className="text-sm uppercase tracking-[0.28em] text-[#a48948]">
+                <div className="border border-[color:var(--color-border)] bg-[var(--color-surface)] p-6">
+                  <h3 className="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
                     Key Findings
                   </h3>
-                  <ul className="mt-4 space-y-2 text-sm leading-7 text-black/72">
+                  <ul className="mt-4 space-y-2 text-sm leading-7 text-[var(--color-text-muted)]">
                     {filmarks.findings.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -432,13 +430,10 @@ export default function HomeContent() {
                 </div>
               </div>
 
-              <div className="border border-black/10 p-6 md:p-8">
+              <div className="border border-[color:var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8 transition hover:border-[color:var(--color-border-strong)]">
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div className="text-xs uppercase tracking-[0.28em] text-[#a48948]">
+                  <div className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent)]">
                     Chart Images
-                  </div>
-                  <div className="text-sm text-black/55">
-                    Path: {filmarks.chartPath}
                   </div>
                 </div>
 
@@ -446,21 +441,13 @@ export default function HomeContent() {
                   {filmarks.charts.map((chart) => (
                     <div
                       key={chart.name}
-                      className="border border-black/10 bg-[#faf9f6] p-4"
+                      className="border border-[color:var(--color-border)] bg-[var(--color-surface-strong)] p-4 transition hover:border-[color:var(--color-border-strong)]"
                     >
-                      <div className="overflow-hidden border border-black/10 bg-white">
-                        <Image
-                          src={chart.name}
-                          alt={chart.label}
-                          width={1200}
-                          height={900}
-                          className="h-auto w-full object-cover transition duration-500 hover:scale-[1.02]"
-                        />
-                      </div>
-                      <div className="mt-4 text-base font-medium text-black/88">
+                      <ImageLightbox src={chart.name} alt={chart.label} />
+                      <div className="mt-4 text-base font-medium text-[var(--color-text)]">
                         {chart.label}
                       </div>
-                      <p className="mt-2 text-sm leading-7 text-black/66">
+                      <p className="mt-2 text-sm leading-7 text-[var(--color-text-muted)]">
                         {chart.description}
                       </p>
                     </div>
@@ -471,10 +458,10 @@ export default function HomeContent() {
           </div>
         </section>
 
-        <section id="about" className="border-t border-black/10 py-16 md:py-20">
+        <section id="about" className="border-t border-[color:var(--color-border)] py-16 md:py-20">
           <div className="grid gap-10 md:grid-cols-[0.45fr_0.55fr]">
             <div>
-              <div className="text-sm uppercase tracking-[0.28em] text-[#a48948]">
+              <div className="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
                 About
               </div>
               <h2 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">
@@ -485,7 +472,7 @@ export default function HomeContent() {
             </div>
 
             <div>
-              <p className="text-base leading-8 text-black/72 md:text-lg">
+              <p className="text-base leading-8 text-[var(--color-text-muted)] md:text-lg">
                 日本で情報通信分野を学びながら、Pythonを中心としたスクレイピング、データ分析、そしてWeb実装に取り組んでいます。
                 単にコードを書くのではなく、課題を整理し、実行可能な形まで落とし込むプロセスを大切にしています。
               </p>
@@ -494,7 +481,7 @@ export default function HomeContent() {
                 {interests.map((item) => (
                   <span
                     key={item}
-                    className="border border-[#a48948]/35 px-3 py-2 text-sm tracking-[0.04em] text-black/76"
+                    className="border border-[color:var(--color-accent)] px-3 py-2 text-sm tracking-[0.04em] text-[var(--color-text-muted)] opacity-90"
                   >
                     {item}
                   </span>
