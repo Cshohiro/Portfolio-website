@@ -9,7 +9,7 @@ export default function IntroGate({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setLoading(false);
-    }, 2800);
+    }, 1000);
 
     return () => window.clearTimeout(timer);
   }, []);
